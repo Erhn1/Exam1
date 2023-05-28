@@ -84,7 +84,7 @@ public class HomePage extends JFrame {
         rightPanel.add(button3, gbc);
 
         // Create the left panel and set its image background
-        leftPanel = new ImagePanel(new ImageIcon("C:\\Users\\Charles\\Downloads\\download.jpg").getImage());
+        leftPanel = new ImagePanel(new ImageIcon("C:\\Users\\Charles\\Downloads\\homepage.jpg").getImage());
 
         // Add the panels to the frame
         add(leftPanel);
