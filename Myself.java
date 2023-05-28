@@ -23,7 +23,7 @@ public class Myself implements ActionListener {
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
 
         // Load the image and resize it to fit the panel
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\MYSELF.png");
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\myself.jpg");
         Image image = imageIcon.getImage().getScaledInstance(contentPane.getWidth(), contentPane.getHeight(),
                 Image.SCALE_SMOOTH);
         ImageIcon resizedImageIcon = new ImageIcon(image);
@@ -63,7 +63,7 @@ public class Myself implements ActionListener {
 
     protected JButton createBackButton() {
         JButton backButton = new JButton("X");
-        Color bback1 = Color.red;
+        Color bback1 = Color.black;
         backButton.setBackground(bback1);
         Color tback1 = Color.white;
         backButton.setForeground(tback1);
@@ -82,17 +82,17 @@ public class Myself implements ActionListener {
 
     protected JButton createNextButton() {
         JButton nextButton = new JButton(">");
-        Color bnext1 = Color.green;
+        Color bnext1 = Color.black;
         nextButton.setBackground(bnext1);
         Color tnext1 = Color.white;
         nextButton.setForeground(tnext1);
-        nextButton.addActionListener(new MySkills());
+        nextButton.addActionListener(new MyEducation());
         return nextButton;
     }
 
     protected JPanel createButtonPanel(JButton backButton, JButton nextButton) {
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.white);
+        buttonPanel.setBackground(Color.black);
         buttonPanel.setLayout(new BorderLayout());
         buttonPanel.add(backButton, BorderLayout.WEST);
         buttonPanel.add(nextButton, BorderLayout.EAST);
