@@ -16,7 +16,7 @@ class MySkills extends Myself {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Custom image path for MySkills class
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\skills.png");
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\myskills.jpg");
 
         // Call the desired methods inherited from the superclass to utilize their functionality
         JFrame frame = createFrame("MySkills", 800, 600);
@@ -44,7 +44,7 @@ class MySkills extends Myself {
     @Override
     protected JButton createNextButton() {
         JButton nextButton = new JButton(">"); // Provide your custom button label
-        nextButton.setBackground(Color.green);
+        nextButton.setBackground(Color.black);
         nextButton.setForeground(Color.white);
         nextButton.addActionListener(new ActionListener() {
             @Override
