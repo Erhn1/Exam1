@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,14 +16,15 @@ class MyWorks extends Myself {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Custom image path for MyWorks class
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\DP.jpg");
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\mywork.jpg");
 
         // Call the desired methods inherited from the superclass to utilize their functionality
         JFrame frame = createFrame("MyWorks", 800, 600);
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
         JLabel imageLabel = createImageLabel(imageIcon, contentPane.getSize());
+        JButton nextButton = createNextButton();
         JButton backButton = createBackButton();
-        JPanel buttonPanel = createButtonPanel(backButton);
+        JPanel buttonPanel = createButtonPanel(backButton, nextButton);
 
         contentPane.add(imageLabel, BorderLayout.CENTER);
         contentPane.add(buttonPanel, BorderLayout.NORTH);
@@ -39,11 +41,19 @@ class MyWorks extends Myself {
         return new JLabel(resizedImageIcon);
     }
 
-    protected JPanel createButtonPanel(JButton button) {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.white);
-        buttonPanel.setLayout(new BorderLayout());
-        buttonPanel.add(button, BorderLayout.EAST);
-        return buttonPanel;
+    @Override
+    protected JButton createNextButton() {
+        JButton nextButton = new JButton(">"); // Provide your custom button label
+        nextButton.setBackground(Color.black);
+        nextButton.setForeground(Color.white);
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the actionPerformed method of the MyWorks class directly
+                MyWork2 myWork2 = new MyWork2();
+                myWork2.actionPerformed(e);
+            }
+        });
+        return nextButton;
     }
 }
