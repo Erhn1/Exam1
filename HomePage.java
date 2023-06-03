@@ -28,60 +28,58 @@ public class HomePage extends JFrame {
         // Create a GridLayout with 1 row and 2 columns
         setLayout(new GridLayout(1, 2));
 
-        // Create the right panel with GridBagLayout and set its background color to white
+        // Create the right panel 
         rightPanel = new JPanel(new GridBagLayout());
         rightPanel.setBackground(Color.white);
-
         JLabel rightLabel = new JLabel("My Portfolio");
         rightLabel.setFont(new Font("Monospaced", Font.BOLD, 50));
 
-        // Create GridBagConstraints and set desired position and padding
+        // Create GridBagConstraints and set desired position
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 0, 10, 0); // top, left, bottom, right
         rightPanel.add(rightLabel, gbc);
 
         // Create the buttons
-        JButton button1 = new JButton("Myself");
-        button1.addActionListener(new Myself());
-
-        JButton button2 = new JButton("My Skills");
-        button2.addActionListener(new MySkills());
-        
-        JButton button3 = new JButton("My Works");
-        button3.addActionListener(new MyWorks());
-
+        JButton selfBtn = new JButton("Myself");
+        selfBtn.addActionListener(new Myself());
+        JButton skillsBtn = new JButton("My Skills");
+        skillsBtn.addActionListener(new MySkills());
+        JButton worksBtn = new JButton("My Works");
+        skillsBtn.addActionListener(new MyWorks());
 
         // Resize the buttons
-        Dimension buttonSize = new Dimension(150, 50); // Adjust the width and height as desired
-        button1.setPreferredSize(buttonSize);
-        button2.setPreferredSize(buttonSize);
-        button3.setPreferredSize(buttonSize);
+        Dimension buttonSize = new Dimension(150, 50);
+        selfBtn.setPreferredSize(buttonSize);
+        skillsBtn.setPreferredSize(buttonSize);
+        worksBtn.setPreferredSize(buttonSize);
 
-        // Change the color of the buttons to black
+        // Change the color of the buttons
         Color buttonColor = Color.black;
-        button1.setBackground(buttonColor);
-        button2.setBackground(buttonColor);
-        button3.setBackground(buttonColor);
+        selfBtn.setBackground(buttonColor);
+        skillsBtn.setBackground(buttonColor);
+        worksBtn.setBackground(buttonColor);
 
+        // Change the text color of the buttons
         Color textColor = Color.white;
-        button1.setForeground(textColor);
-        button2.setForeground(textColor);
-        button3.setForeground(textColor);
+        selfBtn.setForeground(textColor);
+        skillsBtn.setForeground(textColor);
+        worksBtn.setForeground(textColor);
 
         // Change the size of the text in the buttons
         int fontSize = 20; // Adjust the font size as desired
         Font buttonFont = new Font(Font.SANS_SERIF, Font.BOLD, fontSize);
-        button1.setFont(buttonFont);
-        button2.setFont(buttonFont);
-        button3.setFont(buttonFont);
+        selfBtn.setFont(buttonFont);
+        skillsBtn.setFont(buttonFont);
+        worksBtn.setFont(buttonFont);
 
-        gbc.gridx = 0; // Set the column to 0 for all buttons
-        gbc.gridy = GridBagConstraints.RELATIVE; // Use GridBagConstraints.RELATIVE to maintain vertical alignment
-        gbc.insets = new Insets(20, 0, 0, 0); // Adjust padding for the buttons
+        // Adjust the location for the buttons
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.insets = new Insets(20, 0, 0, 0);
 
-        rightPanel.add(button1, gbc);
-        rightPanel.add(button2, gbc);
-        rightPanel.add(button3, gbc);
+        rightPanel.add(selfBtn, gbc);
+        rightPanel.add(skillsBtn, gbc);
+        rightPanel.add(worksBtn, gbc);
 
         // Create the left panel and set its image background
         leftPanel = new ImagePanel(new ImageIcon("C:\\Users\\Charles\\Downloads\\homepage.jpg").getImage());
