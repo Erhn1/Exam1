@@ -45,7 +45,7 @@ public class HomePage extends JFrame {
         JButton skillsBtn = new JButton("My Skills");
         skillsBtn.addActionListener(new MySkills());
         JButton worksBtn = new JButton("My Works");
-        skillsBtn.addActionListener(new MyWorks());
+        worksBtn.addActionListener(new MyWorks());
 
         // Resize the buttons
         Dimension buttonSize = new Dimension(150, 50);
