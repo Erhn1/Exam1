@@ -1,29 +1,30 @@
 package exam1;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-class MyWorks extends Myself {
+public class MyWorks extends Myself {
+    private String[] imagePaths = {
+        "C:\\Users\\Charles\\Downloads\\5.jpg",
+        "C:\\Users\\Charles\\Downloads\\6.jpg",
+        "C:\\Users\\Charles\\Downloads\\7.jpg",
+        "C:\\Users\\Charles\\Downloads\\8.jpg"
+    };
+
+    private int currentImageIndex = 0;
+    private JButton backButton;
+    private JButton nextButton;
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Custom image path for MyWorks class
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\mywork.jpg");
+        ImageIcon imageIcon = new ImageIcon(imagePaths[currentImageIndex]);
 
-        // Call the desired methods inherited from the superclass to utilize their functionality
         JFrame frame = createFrame("MyWorks", 800, 600);
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
         JLabel imageLabel = createImageLabel(imageIcon, contentPane.getSize());
-        JButton nextButton = createNextButton();
-        JButton backButton = createBackButton();
+        nextButton = createNextButton();
+        backButton = createBackButton();
         JPanel buttonPanel = createButtonPanel(backButton, nextButton);
 
         contentPane.add(imageLabel, BorderLayout.CENTER);
@@ -33,6 +34,8 @@ class MyWorks extends Myself {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        
+        workButton();
     }
 
     private JLabel createImageLabel(ImageIcon imageIcon, Dimension panelSize) {
@@ -43,17 +46,41 @@ class MyWorks extends Myself {
 
     @Override
     protected JButton createNextButton() {
-        JButton nextButton = new JButton(">"); // Provide your custom button label
-        nextButton.setBackground(Color.black);
-        nextButton.setForeground(Color.white);
+        nextButton = new JButton(">");
+        nextButton.setBackground(Color.BLACK);
+        nextButton.setForeground(Color.WHITE);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Call the actionPerformed method of the MyWorks class directly
-                MyWork2 myWork2 = new MyWork2();
-                myWork2.actionPerformed(e);
+                currentImageIndex++;
+                workButton();
+                MyWorks.this.actionPerformed(e);
             }
         });
         return nextButton;
+    }
+
+    @Override
+    protected JButton createBackButton() {
+        JButton backButton = new JButton("<");
+        backButton.setBackground(Color.BLACK);
+        backButton.setForeground(Color.WHITE);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+                frame.dispose();
+            }
+        });
+        return backButton;
+    }
+
+    private void workButton() {
+        int imageCount = imagePaths.length;
+        if (currentImageIndex == imageCount - 1) {
+            nextButton.setEnabled(false);
+        } else {
+            nextButton.setEnabled(true);
+        }
     }
 }
