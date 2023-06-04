@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 public class MyHobbies extends Myself {
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Custom image path for MySkills class
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\myhobbies.jpg");
+        // Custom image for MyHobbies class
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\3.jpg");
 
-        // Call the desired methods inherited from the superclass to utilize their functionality
+        // Inherit methods from the superclass
         JFrame frame = createFrame("MyEducation", 800, 600);
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
         JLabel imageLabel = createImageLabel(imageIcon, contentPane.getSize());
@@ -41,6 +41,7 @@ public class MyHobbies extends Myself {
         return new JLabel(resizedImageIcon);
     }
 
+    // Override the fuction of the next button
     @Override
     protected JButton createNextButton() {
         JButton nextButton = new JButton(">"); // Provide your custom button label
