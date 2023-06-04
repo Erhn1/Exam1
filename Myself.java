@@ -15,26 +15,24 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Myself implements ActionListener {
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // Action to perform when the button is clicked
         JFrame frame = createFrame("Myself", 800, 600);
-
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
 
         // Load the image and resize it to fit the panel
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\myself.jpg");
-        Image image = imageIcon.getImage().getScaledInstance(contentPane.getWidth(), contentPane.getHeight(),
-                Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Charles\\Downloads\\1.jpg");
+        Image image = imageIcon.getImage().getScaledInstance(contentPane.getWidth(), contentPane.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon resizedImageIcon = new ImageIcon(image);
 
         // Create a label with the resized image
         JLabel imageLabel = new JLabel(resizedImageIcon);
         contentPane.add(imageLabel, BorderLayout.CENTER);
 
-        // Create the back button
+        // Create the next and back button
         JButton backButton = createBackButton();
-        // Create the next button
         JButton nextButton = createNextButton();
 
         // Create the button panel and add the buttons
@@ -48,25 +46,26 @@ public class Myself implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-
+    
+    // Create a frame
     protected JFrame createFrame(String title, int width, int height) {
         JFrame frame = new JFrame(title);
         frame.setSize(width, height);
         return frame;
     }
 
+    // Create a panel
     protected JPanel createPanel(Dimension size, LayoutManager layout) {
         JPanel panel = new JPanel(layout);
         panel.setSize(size);
         return panel;
     }
 
+    // Create a back button
     protected JButton createBackButton() {
         JButton backButton = new JButton("X");
-        Color bback1 = Color.black;
-        backButton.setBackground(bback1);
-        Color tback1 = Color.white;
-        backButton.setForeground(tback1);
+        backButton.setBackground(Color.black);
+        backButton.setForeground(Color.white);
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,16 +79,16 @@ public class Myself implements ActionListener {
         return backButton;
     }
 
+    // Create a next button
     protected JButton createNextButton() {
         JButton nextButton = new JButton(">");
-        Color bnext1 = Color.black;
-        nextButton.setBackground(bnext1);
-        Color tnext1 = Color.white;
-        nextButton.setForeground(tnext1);
+        nextButton.setBackground(Color.black);
+        nextButton.setForeground(Color.white);
         nextButton.addActionListener(new MyEducation());
         return nextButton;
     }
 
+    // Create a button panel
     protected JPanel createButtonPanel(JButton backButton, JButton nextButton) {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.black);
