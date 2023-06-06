@@ -18,7 +18,8 @@ public class MyWorks extends Myself {
     private JButton backButton;
     private JButton nextButton;
     private JFrame frame;
-
+    
+    // Inherit methods from the superclass
     @Override
     public void actionPerformed(ActionEvent e) {
         ImageIcon imageIcon = new ImageIcon(imagePaths[currentImageIndex]);
@@ -49,7 +50,8 @@ public class MyWorks extends Myself {
         ImageIcon resizedImageIcon = new ImageIcon(image);
         return new JLabel(resizedImageIcon);
     }
-
+    
+    // Override the fuction of the next button
     @Override
     protected JButton createNextButton() {
         nextButton = new JButton(">");
@@ -65,7 +67,8 @@ public class MyWorks extends Myself {
         });
         return nextButton;
     }
-
+    
+    // Override the fuction of the back button
     @Override
     protected JButton createBackButton() {
         JButton backButton = new JButton("x");
