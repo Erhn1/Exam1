@@ -1,16 +1,8 @@
 package exam1;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class MyEducation extends Myself {
     @Override
@@ -44,13 +36,12 @@ public class MyEducation extends Myself {
     // Override the fuction of the next button
     @Override
     protected JButton createNextButton() {
-        JButton nextButton = new JButton(">"); // Provide your custom button label
+        JButton nextButton = new JButton(">");
         nextButton.setBackground(Color.black);
         nextButton.setForeground(Color.white);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Call the actionPerformed method of the MyWorks class directly
                 MyHobbies myHobbies = new MyHobbies();
                 myHobbies.actionPerformed(e);
             }
