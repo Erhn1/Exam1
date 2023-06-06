@@ -3,6 +3,7 @@ package exam1;
 import java.awt.*;
 import javax.swing.*;
 
+// Extend to JFrame to inherit funtionalities
 public class HomePage extends JFrame {
     private JPanel rightPanel;
     private JPanel leftPanel;
@@ -13,7 +14,7 @@ public class HomePage extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
 
-        // Create a GridLayout with 1 row and 2 columns
+        // Create a GridLayout for the left and right panel (with 1 row and 2 columns) 
         setLayout(new GridLayout(1, 2));
 
         // Create the right panel
@@ -64,7 +65,8 @@ public class HomePage extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = GridBagConstraints.RELATIVE;
         gbc.insets = new Insets(20, 0, 0, 0);
-
+       
+        // Add the buttons to the right panel
         rightPanel.add(selfBtn, gbc);
         rightPanel.add(skillsBtn, gbc);
         rightPanel.add(worksBtn, gbc);
