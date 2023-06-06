@@ -18,15 +18,18 @@ public class MySkills extends Myself {
         JButton nextButton = createNextButton();
         JPanel buttonPanel = createButtonPanel(backButton, nextButton);
 
+        // Add the image and button panel to the frame    
         contentPane.add(imageLabel, BorderLayout.CENTER);
         contentPane.add(buttonPanel, BorderLayout.NORTH);
-
+        
+        // Frame components and functions
         frame.setContentPane(contentPane);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-
+    
+    // Display the new image
     private JLabel createImageLabel(ImageIcon imageIcon, Dimension panelSize) {
         Image image = imageIcon.getImage().getScaledInstance(panelSize.width, panelSize.height, Image.SCALE_SMOOTH);
         ImageIcon resizedImageIcon = new ImageIcon(image);
