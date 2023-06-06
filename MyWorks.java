@@ -15,12 +15,13 @@ public class MyWorks extends Myself {
     private int currentImageIndex = 0;
     private JButton backButton;
     private JButton nextButton;
+    private JFrame frame; // Reference to the current frame
 
     @Override
     public void actionPerformed(ActionEvent e) {
         ImageIcon imageIcon = new ImageIcon(imagePaths[currentImageIndex]);
 
-        JFrame frame = createFrame("MyWorks", 800, 600);
+        frame = createFrame("MyWorks", 800, 600);
         JPanel contentPane = createPanel(frame.getSize(), new BorderLayout());
         JLabel imageLabel = createImageLabel(imageIcon, contentPane.getSize());
         nextButton = createNextButton();
@@ -35,7 +36,7 @@ public class MyWorks extends Myself {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         
-        stopButton();
+        workButton();
     }
 
     private JLabel createImageLabel(ImageIcon imageIcon, Dimension panelSize) {
@@ -53,7 +54,7 @@ public class MyWorks extends Myself {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndex++;
-                stopButton();
+                workButton();
                 MyWorks.this.actionPerformed(e);
             }
         });
@@ -62,20 +63,21 @@ public class MyWorks extends Myself {
 
     @Override
     protected JButton createBackButton() {
-        JButton backButton = new JButton("<");
+        JButton backButton = new JButton("x");
         backButton.setBackground(Color.BLACK);
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-                frame.dispose();
+                frame.dispose(); // Close the current frame
+                HomePage homePage = new HomePage();
+                homePage.setVisible(true); // Show the HomePage frame
             }
         });
         return backButton;
     }
 
-    private void stopButton() {
+    private void workButton() {
         int imageCount = imagePaths.length;
         if (currentImageIndex == imageCount - 1) {
             nextButton.setEnabled(false);
