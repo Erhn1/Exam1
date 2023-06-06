@@ -1,19 +1,7 @@
 package exam1;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.awt.*;
+import javax.swing.*;
 
 public class HomePage extends JFrame {
     private JPanel rightPanel;
@@ -28,7 +16,7 @@ public class HomePage extends JFrame {
         // Create a GridLayout with 1 row and 2 columns
         setLayout(new GridLayout(1, 2));
 
-        // Create the right panel 
+        // Create the right panel
         rightPanel = new JPanel(new GridBagLayout());
         rightPanel.setBackground(Color.white);
         JLabel rightLabel = new JLabel("My Portfolio");
@@ -81,26 +69,21 @@ public class HomePage extends JFrame {
         rightPanel.add(skillsBtn, gbc);
         rightPanel.add(worksBtn, gbc);
 
-        // Create the left panel and set its image background
-        leftPanel = new ImagePanel(new ImageIcon("C:\\Users\\Charles\\Downloads\\homepage.jpg").getImage());
+        // Set the image background for the left panel
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\Charles\\Downloads\\9.png");
+        leftPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), null);
+            }
+        };
+
+        // Set the preferred size for the left panel
+        leftPanel.setPreferredSize(new Dimension(backgroundImage.getIconWidth(), backgroundImage.getIconHeight()));
 
         // Add the panels to the frame
         add(leftPanel);
         add(rightPanel);
-    }
-
-    private static class ImagePanel extends JPanel {
-        private Image backgroundImage;
-
-        public ImagePanel(Image backgroundImage) {
-            this.backgroundImage = backgroundImage;
-            setPreferredSize(new Dimension(backgroundImage.getWidth(null), backgroundImage.getHeight(null)));
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), null);
-        }
     }
 }
