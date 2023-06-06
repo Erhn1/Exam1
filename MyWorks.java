@@ -5,17 +5,19 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class MyWorks extends Myself {
+    // Array of image paths
     private String[] imagePaths = {
         "C:\\Users\\Charles\\Downloads\\5.jpg",
         "C:\\Users\\Charles\\Downloads\\6.jpg",
         "C:\\Users\\Charles\\Downloads\\7.jpg",
         "C:\\Users\\Charles\\Downloads\\8.jpg"
     };
-
+    
+    // Variable declaration
     private int currentImageIndex = 0;
     private JButton backButton;
     private JButton nextButton;
-    private JFrame frame; // Reference to the current frame
+    private JFrame frame;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -27,10 +29,12 @@ public class MyWorks extends Myself {
         nextButton = createNextButton();
         backButton = createBackButton();
         JPanel buttonPanel = createButtonPanel(backButton, nextButton);
-
+        
+        // Add the image and button panel to the frame
         contentPane.add(imageLabel, BorderLayout.CENTER);
         contentPane.add(buttonPanel, BorderLayout.NORTH);
-
+        
+        // Frame components and functions
         frame.setContentPane(contentPane);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +42,8 @@ public class MyWorks extends Myself {
         
         stopButton();
     }
-
+     
+    // Display the new image
     private JLabel createImageLabel(ImageIcon imageIcon, Dimension panelSize) {
         Image image = imageIcon.getImage().getScaledInstance(panelSize.width, panelSize.height, Image.SCALE_SMOOTH);
         ImageIcon resizedImageIcon = new ImageIcon(image);
@@ -76,7 +81,8 @@ public class MyWorks extends Myself {
         });
         return backButton;
     }
-
+    
+    // To disable next button
     private void stopButton() {
         int imageCount = imagePaths.length;
         if (currentImageIndex == imageCount - 1) {
