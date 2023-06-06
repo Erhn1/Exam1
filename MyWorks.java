@@ -36,7 +36,7 @@ public class MyWorks extends Myself {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         
-        workButton();
+        stopButton();
     }
 
     private JLabel createImageLabel(ImageIcon imageIcon, Dimension panelSize) {
@@ -54,7 +54,7 @@ public class MyWorks extends Myself {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndex++;
-                workButton();
+                stopButton();
                 MyWorks.this.actionPerformed(e);
             }
         });
@@ -77,7 +77,7 @@ public class MyWorks extends Myself {
         return backButton;
     }
 
-    private void workButton() {
+    private void stopButton() {
         int imageCount = imagePaths.length;
         if (currentImageIndex == imageCount - 1) {
             nextButton.setEnabled(false);
